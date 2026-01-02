@@ -1,11 +1,16 @@
+import { useState } from "react";
+
 import "./App.css";
 export default function App() {
+  const [count, setCount] = useState(0);
+
+
   return (
     <>
 
       <h1>Counter</h1>
       <div className="card">
-        Count is 37
+        <h1>Count is {count}</h1>
       </div>
       <div>
         <button
