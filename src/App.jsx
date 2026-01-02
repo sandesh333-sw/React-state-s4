@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./App.css";
 export default function App() {
   const [count, setCount] = useState(0);
-
+  const [countToSet, setCountToSet] = useState(0);
 
   return (
     <>
@@ -14,21 +14,21 @@ export default function App() {
       </div>
       <div>
         <button
-          onClick={() => { }}
+          onClick={() => setCount(count+1)}
           style={{ margin: "0 5 px" }}
         >
           Increase
         </button>
 
         <button
-          onClick={() => { }}
+          onClick={() => setCount((count) => Math.max(count-1, 0))}
           style={{ margin: "0 5 px" }}
         >
           Decrease
         </button>
 
         <button
-          onClick={() => { }}
+          onClick={() => setCount(0)}
           style={{ margin: "0 5 px" }}
         >
           Reset
@@ -43,12 +43,17 @@ export default function App() {
             margin: "0 5px",
             padding: "0.6em 1.2em",
           }}
-          value={10}
-          onChange={() => { }}
+          value={countToSet}
+          onChange={(e) => setCountToSet(Number(e.target.value))}
           type="text"
         >
         </input>
-        <button>Set to 10</button>
+        <button
+        onClick={() => {
+          setCount(Number(countToSet))
+        }}
+        >
+          Increase by  {countToSet}</button>
       </div>
     </>
   );
